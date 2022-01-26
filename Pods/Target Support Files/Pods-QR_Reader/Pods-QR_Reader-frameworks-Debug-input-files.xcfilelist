@@ -1,0 +1,3 @@
+${PODS_ROOT}/Target Support Files/Pods-QR_Reader/Pods-QR_Reader-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Realm/Realm.framework
+${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework

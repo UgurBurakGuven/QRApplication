@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "54ACF590-F22F-4429-819A-B1948A6E540F"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2C946518-86D9-4532-886A-4DC5BC5AF17D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QR_Reader/QRScannerController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "QRScannerController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "2C946518-86D9-4532-886A-4DC5BC5AF17D - 2ee5d8662051bfd1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "QR_Reader.QRScannerController.messageLabel.getter : Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "QR_Reader"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/macbookair/Desktop/Software/Swift/QR_Reader/QR_Reader/QRScannerController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "88">
+               </Location>
+               <Location
+                  uuid = "2C946518-86D9-4532-886A-4DC5BC5AF17D - 989e5340663c5bdd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "QR_Reader.QRScannerController.messageLabel.setter : Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "QR_Reader"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/macbookair/Desktop/Software/Swift/QR_Reader/QR_Reader/QRScannerController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "108">
+               </Location>
+               <Location
+                  uuid = "2C946518-86D9-4532-886A-4DC5BC5AF17D - b6e3d60bb811e8cf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "QR_Reader.QRScannerController.messageLabel.modify : Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "QR_Reader"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/macbookair/Desktop/Software/Swift/QR_Reader/QR_Reader/QRScannerController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "2C946518-86D9-4532-886A-4DC5BC5AF17D - 902f0dfe7f7375fd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "QR_Reader.QRScannerController.messageLabel.modify : Swift.Optional&lt;__C.UILabel&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "QR_Reader"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/macbookair/Desktop/Software/Swift/QR_Reader/QR_Reader/QRScannerController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "2C946518-86D9-4532-886A-4DC5BC5AF17D - 455848e90660bc7c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "QR_Reader.QRScannerController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; QR_Reader.QRScannerController"
+                  moduleName = "QR_Reader"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/macbookair/Desktop/Software/Swift/QR_Reader/QR_Reader/QRScannerController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "728">
+               </Location>
+               <Location
+                  uuid = "2C946518-86D9-4532-886A-4DC5BC5AF17D - f3d402908ef75200"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "QR_Reader.QRScannerController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;QR_Reader.QRScannerController&gt;"
+                  moduleName = "QR_Reader"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/macbookair/Desktop/Software/Swift/QR_Reader/QR_Reader/QRScannerController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "704">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
