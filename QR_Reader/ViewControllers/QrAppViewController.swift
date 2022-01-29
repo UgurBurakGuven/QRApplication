@@ -18,13 +18,14 @@ class QrAppViewController: UIViewController {
     var input : AVCaptureDeviceInput?
     var captureMetadataOutput : AVCaptureMetadataOutput?
     var counter = 0
+    var realmTest = 0
 
     let realm = try! Realm()
     
-    @IBOutlet weak var rotateButton: UIButton!
-    @IBOutlet weak var pastButton: UIButton!
-    @IBOutlet weak var selectImageButton: UIButton!
-    @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var changeCameraButton: UIButton!
+    @IBOutlet weak var pastSitesButton: UIButton!
+    @IBOutlet weak var selectImageFromGalleryButton: UIButton!
+    @IBOutlet weak var flashlightButton: UIButton!
     @IBOutlet weak var imageView: UIImageView!
     
     override func viewDidLoad() {
@@ -63,10 +64,10 @@ class QrAppViewController: UIViewController {
             captureSession.startRunning()
 
             view.bringSubviewToFront(imageView)
-            view.bringSubviewToFront(button)
-            view.bringSubviewToFront(rotateButton)
-            view.bringSubviewToFront(selectImageButton)
-            view.bringSubviewToFront(pastButton)
+            view.bringSubviewToFront(flashlightButton)
+            view.bringSubviewToFront(changeCameraButton)
+            view.bringSubviewToFront(selectImageFromGalleryButton)
+            view.bringSubviewToFront(pastSitesButton)
             
             qrcodeFrameView = UIView()
             
@@ -83,7 +84,7 @@ class QrAppViewController: UIViewController {
         }
     }
     
-    @IBAction func rotateButtonClicked(_ sender: Any) {
+    @IBAction func changeCameraButtonClicked(_ sender: Any) {
         captureSession.removeInput(input!)
         captureSession.removeOutput(captureMetadataOutput!)
         captureSession.stopRunning()
@@ -101,7 +102,7 @@ class QrAppViewController: UIViewController {
     }
     
         
-    @IBAction func butttonClicked(_ sender: Any) {
+    @IBAction func flashlightButttonClicked(_ sender: Any) {
             guard let device = AVCaptureDevice.default(for: .video) else { return }
 
             if device.hasTorch {
@@ -150,26 +151,37 @@ extension QrAppViewController : AVCaptureMetadataOutputObjectsDelegate {
             return
         }
         
-        let metadataObj = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
-        
-        if metadataObj.type == AVMetadataObject.ObjectType.qr {
-            let barCodeObject = captureLayer?.transformedMetadataObject(for: metadataObj)
-            qrcodeFrameView?.frame = barCodeObject!.bounds
-            
-            if metadataObj.stringValue != nil {
-                let date = Date()
-                let df = DateFormatter()
-                df.dateFormat = "dd.MM.yyyy"
-                let dateString = df.string(from: date)
-                let detail = pastSites()
-                detail.url = metadataObj.stringValue
-                detail.date = dateString
-                try! realm.write({
-                    realm.add(detail)
-                    print("added")
-                })
-                UIApplication.shared.open((URL(string: String(metadataObj.stringValue!)) ?? URL(string: "https://www.google.com.tr"))!)
-            }
+        let metadataObj = metadataObjects.first as! AVMetadataMachineReadableCodeObject
+        if URL(string: String(metadataObj.stringValue!)) != nil {
+            if metadataObj.type == AVMetadataObject.ObjectType.qr {
+                let barCodeObject = captureLayer?.transformedMetadataObject(for: metadataObj)
+                qrcodeFrameView?.frame = barCodeObject!.bounds
+                
+                if metadataObj.stringValue != nil {
+                    let results = realm.objects(pastSites.self)
+                    for counter in 0..<results.count {
+                        if results[counter].url == metadataObj.stringValue {
+                            realmTest += 1
+                        }
+                    }
+                    if realmTest == 0 {
+                        let date = Date()
+                        let df = DateFormatter()
+                        df.dateFormat = "dd.MM.yyyy"
+                        let dateString = df.string(from: date)
+                        let detail = pastSites()
+                        detail.url = metadataObj.stringValue ?? ""
+                        detail.date = dateString
+                        try! realm.write({
+                            realm.add(detail)
+                            print("added")
+                        })
+                    }
+                realmTest = 0
+                    UIApplication.shared.open((URL(string: String(metadataObj.stringValue!)) ?? URL(string: "https://www.google.com.tr"))!)
+                }
+        }
+       
         }
     }
     
@@ -190,22 +202,37 @@ extension QrAppViewController : UIImagePickerControllerDelegate,UINavigationCont
             for feature in features as! [CIQRCodeFeature] {
                 qrCodeLink += feature.messageString!
             }
+            if URL(string: String(qrCodeLink)) != nil {
+                if qrCodeLink=="" {
+                    print("nothing")
+                }else{
+                    let results = realm.objects(pastSites.self)
+                    for counter in 0..<results.count {
+                        if results[counter].url == qrCodeLink {
+                            realmTest += 1
+                        }
+                    }
+                    if realmTest == 0 {
+                        let date = Date()
+                        let df = DateFormatter()
+                        df.dateFormat = "dd.MM.yyyy"
+                        let dateString = df.string(from: date)
+                        let detail = pastSites()
+                        detail.url = qrCodeLink
+                        detail.date = dateString
+                        try! realm.write({
+                            realm.add(detail)
+                            print("added")
+                        })
+                    }
+                realmTest = 0
+                    print(qrCodeLink)
+                    if let result = URL(string: String(qrCodeLink)){
+                        UIApplication.shared.open(result)
+                    }
+            }
             
-            if qrCodeLink=="" {
-                print("nothing")
-            }else{
-                let date = Date()
-                let df = DateFormatter()
-                df.dateFormat = "dd.MM.yyyy"
-                let dateString = df.string(from: date)
-                let detail = pastSites()
-                detail.url = qrCodeLink
-                detail.date = dateString
-                try! realm.write({
-                    realm.add(detail)
-                    print("added")
-                })
-                UIApplication.shared.open((URL(string: String(qrCodeLink)))!)
+          
             }
         }
         else{

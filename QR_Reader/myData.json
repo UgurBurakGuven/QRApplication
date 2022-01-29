@@ -1,0 +1,20 @@
+[
+    {
+        "image" : "safari2",
+        "name" : "web sitesi",
+        "url" : "http://",
+        "content" : "URL adresini gir:"
+    },
+    {
+        "image" : "youtube",
+        "name" : "YouTube video",
+        "url" : "https://www.youtube.com/watch?v=",
+        "content" : "YouTube kimliğini girin:"
+    },
+    {
+        "image" : "facebook",
+        "name" : "Facebook Profile",
+        "url" : "https://www.facebook.com/",
+        "content" : "Facebook ismi veya ID numarası girin:"
+    }
+]
