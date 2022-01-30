@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ChooseQrTypeViewController: UIViewController{
 
 
     @IBOutlet weak var qrTypeTableView: UITableView!
     var data : [TypeOfQr]?
+    let realm = try! Realm()
     
     override func viewDidLoad() {
         super.viewDidLoad()

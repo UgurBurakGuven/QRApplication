@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class CreateQRViewController: UIViewController {
 
@@ -13,10 +14,12 @@ class CreateQRViewController: UIViewController {
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var contentTitle: UILabel!
-    
     @IBOutlet weak var saveButton: UIButton!
+    
+    
     var selectedData : TypeOfQr?
     var combinedString = ""
+    let realm = try! Realm()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +27,9 @@ class CreateQRViewController: UIViewController {
         contentLabel.text = selectedData?.content
         contentTitle.text = selectedData?.name
 
+
     }
+    
     
     @IBAction func createQRButtonClicked(_ sender: Any) {
         let myQrCode = textField.text
@@ -43,7 +48,9 @@ class CreateQRViewController: UIViewController {
         self.present(vc, animated: true, completion: nil)
     }
     func generateQRCode(URL: String) -> UIImage? {
+        
         let url_data = URL.data(using: String.Encoding.ascii)
+    
         if let filter = CIFilter(name: "CIQRCodeGenerator") {
             filter.setValue(url_data, forKey: "inputMessage")
             
@@ -57,6 +64,14 @@ class CreateQRViewController: UIViewController {
         return nil
     }
     @IBAction func saveQrButtonClicked(_ sender: Any) {
+        let qr = pastQr()
+        qr.name = selectedData?.name
+        qr.url = combinedString
+        try! realm.write({
+            realm.add(qr)
+        })
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "QRViewController") as! QRViewController
+        self.present(vc, animated: true, completion: nil)
         
     }
     

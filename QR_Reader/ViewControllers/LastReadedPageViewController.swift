@@ -14,6 +14,10 @@ class LastReadedPageViewController: UIViewController {
     let realm = try! Realm()
     var realmArray: [pastSites]? = []
     var counter = 0
+    
+    var filteredData : [pastSites]? = []
+    var searchBar : UISearchBar?
+    var searchBarArray = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,13 +26,16 @@ class LastReadedPageViewController: UIViewController {
         self.pagesTableView.register(UINib(nibName: "PagesTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
         // Do any additional setup after loading the view.
         getDataFromRealm()
+        searchBarSetup()
     }
     
     func getDataFromRealm(){
         let results = realm.objects(pastSites.self)
         for result in results {
             realmArray?.append(result)
+            searchBarArray.append(result.url ?? "")
         }
+        self.filteredData = self.realmArray
     }
     @IBAction func cameraButtonClicked(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "QrAppViewController") as! QrAppViewController
@@ -54,8 +61,8 @@ extension LastReadedPageViewController : UITableViewDataSource, UITableViewDeleg
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? PagesTableViewCell {
-            cell.cellsURL.text = realmArray?[indexPath.row].url
-            cell.cellsDate.text = realmArray?[indexPath.row].date
+            cell.cellsURL.text = filteredData?[indexPath.row].url
+            cell.cellsDate.text = filteredData?[indexPath.row].date
             
             return cell
         }
@@ -63,10 +70,12 @@ extension LastReadedPageViewController : UITableViewDataSource, UITableViewDeleg
         return UITableViewCell()
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return realmArray?.count ?? 0
+        return filteredData?.count ?? 0
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        UIApplication.shared.open((URL(string: String((realmArray?[indexPath.row].url)!)))!)
+        if let url = URL(string: String(realmArray?[indexPath.row].url ?? "")){
+            UIApplication.shared.open(url)
+        }
       
     }
     
@@ -87,6 +96,7 @@ extension LastReadedPageViewController : UITableViewDataSource, UITableViewDeleg
                 try! realm.write({
                     realm.delete(results)
                     realmArray?.remove(at: indexPath.row)
+                    filteredData?.remove(at: indexPath.row)
                 })
                 
             }
@@ -95,5 +105,41 @@ extension LastReadedPageViewController : UITableViewDataSource, UITableViewDeleg
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
+    }
+}
+
+
+
+//MARK: - UISearchBarDelegate
+extension LastReadedPageViewController : UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filteredData = []
+        
+        if searchText == "" {
+            filteredData = realmArray
+        } else {
+            for counter in 0..<realmArray!.count{
+                for result in searchBarArray{
+                    if result.lowercased().contains(searchText.lowercased()){
+                            if realmArray?[counter].url == result {
+                                filteredData?.append(realmArray![counter])
+                                break
+                            }
+                        }
+                }
+            }
+        }
+        self.pagesTableView.reloadData()
+    }
+    
+    func searchBarSetup(){
+        searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 60))
+        searchBar?.showsScopeBar = true
+        searchBar?.delegate = self
+        searchBar?.scopeButtonTitles = ["Filter By URL"]
+        self.pagesTableView.tableHeaderView = searchBar
+    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
     }
 }

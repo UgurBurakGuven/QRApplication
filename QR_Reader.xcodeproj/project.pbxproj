@@ -10,6 +10,8 @@
 		BB6957F28693A4BD877D2BE7 /* Pods_QR_Reader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E3484D92C1C41D3C466D8A3 /* Pods_QR_Reader.framework */; };
 		D021694C27A5E4C500BC1A64 /* TypeOfPageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D021694A27A5E4C500BC1A64 /* TypeOfPageTableViewCell.swift */; };
 		D021694D27A5E4C500BC1A64 /* TypeOfPageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D021694B27A5E4C500BC1A64 /* TypeOfPageTableViewCell.xib */; };
+		D041865327A6AAE500593A14 /* PastQrTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D041865127A6AAE500593A14 /* PastQrTableViewCell.swift */; };
+		D041865427A6AAE500593A14 /* PastQrTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D041865227A6AAE500593A14 /* PastQrTableViewCell.xib */; };
 		D08EDB3E27A16F9700FDB934 /* LastReadedPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08EDB3D27A16F9700FDB934 /* LastReadedPageViewController.swift */; };
 		D08EDB4527A176AC00FDB934 /* PagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08EDB4327A176AC00FDB934 /* PagesTableViewCell.swift */; };
 		D08EDB4627A176AC00FDB934 /* PagesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D08EDB4427A176AC00FDB934 /* PagesTableViewCell.xib */; };
@@ -34,6 +36,8 @@
 		310748DC73E9E99CE2546A77 /* Pods-QR_Reader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QR_Reader.debug.xcconfig"; path = "Target Support Files/Pods-QR_Reader/Pods-QR_Reader.debug.xcconfig"; sourceTree = "<group>"; };
 		D021694A27A5E4C500BC1A64 /* TypeOfPageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfPageTableViewCell.swift; sourceTree = "<group>"; };
 		D021694B27A5E4C500BC1A64 /* TypeOfPageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TypeOfPageTableViewCell.xib; sourceTree = "<group>"; };
+		D041865127A6AAE500593A14 /* PastQrTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastQrTableViewCell.swift; sourceTree = "<group>"; };
+		D041865227A6AAE500593A14 /* PastQrTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PastQrTableViewCell.xib; sourceTree = "<group>"; };
 		D08EDB3D27A16F9700FDB934 /* LastReadedPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastReadedPageViewController.swift; sourceTree = "<group>"; };
 		D08EDB4327A176AC00FDB934 /* PagesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagesTableViewCell.swift; sourceTree = "<group>"; };
 		D08EDB4427A176AC00FDB934 /* PagesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PagesTableViewCell.xib; sourceTree = "<group>"; };
@@ -77,6 +81,7 @@
 		D021694827A5E41B00BC1A64 /* CellsStoryboard */ = {
 			isa = PBXGroup;
 			children = (
+				D041865227A6AAE500593A14 /* PastQrTableViewCell.xib */,
 				D021694B27A5E4C500BC1A64 /* TypeOfPageTableViewCell.xib */,
 				D08EDB4427A176AC00FDB934 /* PagesTableViewCell.xib */,
 			);
@@ -86,6 +91,7 @@
 		D021694927A5E46700BC1A64 /* CellsViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D041865127A6AAE500593A14 /* PastQrTableViewCell.swift */,
 				D021694A27A5E4C500BC1A64 /* TypeOfPageTableViewCell.swift */,
 				D08EDB4327A176AC00FDB934 /* PagesTableViewCell.swift */,
 			);
@@ -257,6 +263,7 @@
 				D08EDB4627A176AC00FDB934 /* PagesTableViewCell.xib in Resources */,
 				D0BEB57B27A0415F001CA26D /* Assets.xcassets in Resources */,
 				D0A3064027A5D3D000731654 /* myData.json in Resources */,
+				D041865427A6AAE500593A14 /* PastQrTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,6 +321,7 @@
 				D0BEB57227A0415E001CA26D /* AppDelegate.swift in Sources */,
 				D08EDB3E27A16F9700FDB934 /* LastReadedPageViewController.swift in Sources */,
 				D021694C27A5E4C500BC1A64 /* TypeOfPageTableViewCell.swift in Sources */,
+				D041865327A6AAE500593A14 /* PastQrTableViewCell.swift in Sources */,
 				D0C609A027A5A24D004F888E /* CreateQRViewController.swift in Sources */,
 				D0A3064227A5D3FC00731654 /* TypeOfQr.swift in Sources */,
 				D0A3063727A5BC8A00731654 /* ChooseQrTypeViewController.swift in Sources */,
@@ -460,6 +468,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = QF3NQPUP3W;
@@ -470,6 +479,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -477,6 +487,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ugurburakguven.QR-Reader";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -489,6 +500,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = QF3NQPUP3W;
@@ -499,6 +511,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -506,6 +519,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ugurburakguven.QR-Reader";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

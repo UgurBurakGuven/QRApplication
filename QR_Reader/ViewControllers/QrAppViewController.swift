@@ -19,7 +19,7 @@ class QrAppViewController: UIViewController {
     var captureMetadataOutput : AVCaptureMetadataOutput?
     var counter = 0
     var realmTest = 0
-
+ 
     let realm = try! Realm()
     
     @IBOutlet weak var changeCameraButton: UIButton!
@@ -28,12 +28,14 @@ class QrAppViewController: UIViewController {
     @IBOutlet weak var flashlightButton: UIButton!
     @IBOutlet weak var imageView: UIImageView!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         start(value: AVCaptureDevice.Position.back)
-        
+      
     }
     
+  
     func start(value: AVCaptureDevice.Position){
         guard let captureDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: value) else {
             print("Failed to get the camera device")
@@ -241,3 +243,5 @@ extension QrAppViewController : UIImagePickerControllerDelegate,UINavigationCont
        self.dismiss(animated: true, completion: nil)
       }
 }
+
+
