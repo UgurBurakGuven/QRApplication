@@ -14,13 +14,16 @@ class CreateQRViewController: UIViewController {
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var contentTitle: UILabel!
     
+    @IBOutlet weak var saveButton: UIButton!
     var selectedData : TypeOfQr?
+    var combinedString = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        saveButton.isHidden = true
         contentLabel.text = selectedData?.content
         contentTitle.text = selectedData?.name
-        // Do any additional setup after loading the view.
+
     }
     
     @IBAction func createQRButtonClicked(_ sender: Any) {
@@ -28,8 +31,9 @@ class CreateQRViewController: UIViewController {
        
         if let myQrCode = myQrCode {
             if let selectedUrl = selectedData?.url {
-                let combinedString = "\(selectedUrl + myQrCode)"
+                combinedString = "\(selectedUrl + myQrCode)"
                 qrImageView.image = generateQRCode(URL: combinedString)
+                saveButton.isHidden = false
             }
         }
     }
@@ -44,12 +48,17 @@ class CreateQRViewController: UIViewController {
             filter.setValue(url_data, forKey: "inputMessage")
             
             let transform = CGAffineTransform(scaleX: 3, y: 3)
+            
             if let output = filter.outputImage?.transformed(by: transform) {
+                
                 return UIImage(ciImage: output)
             }
         }
         return nil
     }
-
+    @IBAction func saveQrButtonClicked(_ sender: Any) {
+        
+    }
+    
 
 }

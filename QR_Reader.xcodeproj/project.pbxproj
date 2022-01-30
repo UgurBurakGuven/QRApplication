@@ -134,6 +134,7 @@
 		D08EDB4727A1808700FDB934 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D0A3064127A5D3FB00731654 /* TypeOfQr.swift */,
 				D08EDB4827A1809400FDB934 /* RealmModel.swift */,
 			);
 			path = Model;
@@ -145,14 +146,6 @@
 				D0A3064327A5D47200731654 /* DataLoader.swift */,
 			);
 			path = DataTransactions;
-			sourceTree = "<group>";
-		};
-		D0A3063B27A5CE4B00731654 /* TypeOfQr */ = {
-			isa = PBXGroup;
-			children = (
-				D0A3064127A5D3FB00731654 /* TypeOfQr.swift */,
-			);
-			path = TypeOfQr;
 			sourceTree = "<group>";
 		};
 		D0BEB56527A0415E001CA26D = {
@@ -176,7 +169,6 @@
 		D0BEB57027A0415E001CA26D /* QR_Reader */ = {
 			isa = PBXGroup;
 			children = (
-				D0A3063B27A5CE4B00731654 /* TypeOfQr */,
 				D0A3063827A5CD6400731654 /* DataTransactions */,
 				D08EDB4727A1808700FDB934 /* Model */,
 				D08EDB4227A1769100FDB934 /* Cells */,

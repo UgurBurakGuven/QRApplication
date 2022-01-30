@@ -1,5 +1,11 @@
 [
     {
+        "image" : "facebook",
+        "name" : "Facebook Profile",
+        "url" : "https://www.facebook.com/",
+        "content" : "Facebook ismi veya ID numarası girin:"
+    },
+    {
         "image" : "safari2",
         "name" : "web sitesi",
         "url" : "http://",
@@ -13,8 +19,39 @@
     },
     {
         "image" : "facebook",
-        "name" : "Facebook Profile",
-        "url" : "https://www.facebook.com/",
-        "content" : "Facebook ismi veya ID numarası girin:"
+        "name" : "Facebook like",
+        "url" : "",
+        "content" : "Enter URL to like:"
+    },
+    {
+        "image" : "appstore",
+        "name" : "App Store",
+        "url" : "http://itunes.apple.com/app/id",
+        "content" : "AppStore kimliğini veya URL girin:"
+    },
+    {
+        "image" : "twitter",
+        "name" : "Twitter Profile",
+        "url" : "https://www.twitter.com/",
+        "content" : "Twitter adı girin:"
+    },
+    {
+        "image" : "twitter",
+        "name" : "Tweet on Twitter",
+        "url" : "https://www.twitter.com/home?status=",
+        "content" : "Metni girin:"
+    },
+    {
+        "image" : "google",
+        "name" : "Google Arama",
+        "url" : "https://www.google.com/search?q=",
+        "content" : "Arama Terimi girin:"
+    },
+    {
+        "image" : "bing",
+        "name" : "Bing Arama",
+        "url" : "https://www.bing.com/search?q=",
+        "content" : "Metni girin:"
     }
 ]
+
