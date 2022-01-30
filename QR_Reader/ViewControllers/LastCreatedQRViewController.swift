@@ -8,8 +8,9 @@
 import UIKit
 import RealmSwift
 
-class QRViewController: UIViewController {
+class LastCreatedQRViewController: UIViewController {
     @IBOutlet weak var qrTableView: UITableView!
+    var counter = 0
     
     let realm = try! Realm()
     
@@ -19,7 +20,6 @@ class QRViewController: UIViewController {
     
     var realmArray : [pastQr]? = []
  
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         qrTableView.delegate = self
@@ -29,6 +29,10 @@ class QRViewController: UIViewController {
         qrTableView.backgroundView = UIImageView(image: UIImage(named: "mat"))
         getDataFromRealm()
         searchBarSetup()
+        
+        let keyboardGestureRecognizer = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        keyboardGestureRecognizer.cancelsTouchesInView = false
+        view.addGestureRecognizer(keyboardGestureRecognizer)
     }
     
     func getDataFromRealm() {
@@ -41,12 +45,18 @@ class QRViewController: UIViewController {
         self.filteredData = self.realmArray
     }
  
+    @IBAction func createQRButtonClicked(_ sender: Any) {
+        if counter == 1 {
+            let indexPath = IndexPath(row: 0, section: 0)
+            qrTableView.scrollToRow(at: indexPath, at: .top, animated: true)
+        }
+    }
     @IBAction func lastReadedPageButtonClicked(_ sender: Any) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "pastPages") as! LastReadedPageViewController
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "pastPages") as! LastOpenedPageViewController
         self.present(vc, animated: true, completion: nil)
     }
     @IBAction func cameraPageButtonClicked(_ sender: Any) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "QrAppViewController") as! QrAppViewController
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "QrAppViewController") as! QrCameraAppViewController
         self.present(vc, animated: true, completion: nil)
     }
    
@@ -74,7 +84,7 @@ class QRViewController: UIViewController {
 
 //MARK: - UITableViewDelegate, UITableViewDataSource
 
-extension QRViewController : UITableViewDelegate, UITableViewDataSource {
+extension LastCreatedQRViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredData?.count ?? 0
     }
@@ -98,6 +108,13 @@ extension QRViewController : UITableViewDelegate, UITableViewDataSource {
         }
        
     }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if let lastVisibleIndexPath = tableView.indexPathsForVisibleRows?.last {
+            if indexPath == lastVisibleIndexPath {
+                counter = 1
+            }
+        }
+    }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
        if editingStyle == .delete {
@@ -110,6 +127,9 @@ extension QRViewController : UITableViewDelegate, UITableViewDataSource {
                    realmArray?.remove(at: indexPath.row)
                    filteredData?.remove(at: indexPath.row)
                })
+               if filteredData?.count == 0 {
+                   counter = 0
+               }
                
            }
            
@@ -123,7 +143,7 @@ extension QRViewController : UITableViewDelegate, UITableViewDataSource {
 }
 
 //MARK: - UISearchBarDelegate
-extension QRViewController : UISearchBarDelegate {
+extension LastCreatedQRViewController : UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filteredData = []
         

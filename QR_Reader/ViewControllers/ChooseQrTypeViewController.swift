@@ -12,7 +12,7 @@ class ChooseQrTypeViewController: UIViewController{
 
 
     @IBOutlet weak var qrTypeTableView: UITableView!
-    var data : [TypeOfQr]?
+    var data : [QrModel]?
     let realm = try! Realm()
     
     override func viewDidLoad() {
@@ -25,7 +25,7 @@ class ChooseQrTypeViewController: UIViewController{
 
     
     @IBAction func okButtonClicked(_ sender: Any) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "QRViewController") as! QRViewController
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "QRViewController") as! LastCreatedQRViewController
         self.present(vc, animated: true, completion: nil)
     }
     

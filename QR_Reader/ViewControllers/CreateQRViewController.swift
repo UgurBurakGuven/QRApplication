@@ -17,7 +17,7 @@ class CreateQRViewController: UIViewController {
     @IBOutlet weak var saveButton: UIButton!
     
     
-    var selectedData : TypeOfQr?
+    var selectedData : QrModel?
     var combinedString = ""
     let realm = try! Realm()
     
@@ -70,7 +70,7 @@ class CreateQRViewController: UIViewController {
         try! realm.write({
             realm.add(qr)
         })
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "QRViewController") as! QRViewController
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "QRViewController") as! LastCreatedQRViewController
         self.present(vc, animated: true, completion: nil)
         
     }

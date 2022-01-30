@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift
 
-class LastReadedPageViewController: UIViewController {
+class LastOpenedPageViewController: UIViewController {
 
     @IBOutlet weak var pagesTableView: UITableView!
     let realm = try! Realm()
@@ -27,6 +27,10 @@ class LastReadedPageViewController: UIViewController {
         // Do any additional setup after loading the view.
         getDataFromRealm()
         searchBarSetup()
+        
+        let keyboardGestureRecognizer = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        keyboardGestureRecognizer.cancelsTouchesInView = false
+        view.addGestureRecognizer(keyboardGestureRecognizer)
     }
     
     func getDataFromRealm(){
@@ -38,26 +42,25 @@ class LastReadedPageViewController: UIViewController {
         self.filteredData = self.realmArray
     }
     @IBAction func cameraButtonClicked(_ sender: Any) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "QrAppViewController") as! QrAppViewController
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "QrAppViewController") as! QrCameraAppViewController
         self.present(vc, animated: true, completion: nil)
     }
     @IBAction func lastReadedButtonClicked(_ sender: Any) {
-//        if counter == 1 {
-//            let indexPath = IndexPath(row: 0, section: 0)
-//            pagesTableView.scrollToRow(at: indexPath, at: .top, animated: true)
-//            print("clicked")
-//        }
+        if counter == 1 {
+            let indexPath = IndexPath(row: 0, section: 0)
+            pagesTableView.scrollToRow(at: indexPath, at: .top, animated: true)
+        }
 
     }
     @IBAction func createQRButtonClicked(_ sender: Any) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "QRViewController") as! QRViewController
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "QRViewController") as! LastCreatedQRViewController
         self.present(vc, animated: true, completion: nil)
     }
 }
 
 //MARK:  UITableViewDataSource, UITableViewDelegate
 
-extension LastReadedPageViewController : UITableViewDataSource, UITableViewDelegate {
+extension LastOpenedPageViewController : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? PagesTableViewCell {
@@ -79,14 +82,13 @@ extension LastReadedPageViewController : UITableViewDataSource, UITableViewDeleg
       
     }
     
-//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        if let lastVisibleIndexPath = tableView.indexPathsForVisibleRows?.last {
-//            if indexPath == lastVisibleIndexPath {
-//                counter = 1
-//            }
-//            print("indexPath----->",indexPath)
-//        }
-//    }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if let lastVisibleIndexPath = tableView.indexPathsForVisibleRows?.last {
+            if indexPath == lastVisibleIndexPath {
+                counter = 1
+            }
+        }
+    }
      func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
 
@@ -98,6 +100,9 @@ extension LastReadedPageViewController : UITableViewDataSource, UITableViewDeleg
                     realmArray?.remove(at: indexPath.row)
                     filteredData?.remove(at: indexPath.row)
                 })
+                if filteredData?.count == 0 {
+                    counter = 0
+                }
                 
             }
             
@@ -111,7 +116,7 @@ extension LastReadedPageViewController : UITableViewDataSource, UITableViewDeleg
 
 
 //MARK: - UISearchBarDelegate
-extension LastReadedPageViewController : UISearchBarDelegate {
+extension LastOpenedPageViewController : UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filteredData = []
         

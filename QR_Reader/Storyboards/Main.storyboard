@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Qr App View Controller-->
+        <!--Qr Camera App View Controller-->
         <scene sceneID="tAu-5X-8Ci">
             <objects>
-                <viewController storyboardIdentifier="QrAppViewController" modalPresentationStyle="fullScreen" id="8m5-Sh-2Gg" customClass="QrAppViewController" customModule="QR_Reader" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="QrAppViewController" modalPresentationStyle="fullScreen" id="8m5-Sh-2Gg" customClass="QrCameraAppViewController" customModule="QR_Reader" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uQm-dx-BRW">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -105,25 +105,16 @@
             </objects>
             <point key="canvasLocation" x="1378" y="1729"/>
         </scene>
-        <!--Last Readed Page View Controller-->
+        <!--Last Opened Page View Controller-->
         <scene sceneID="iDV-4w-AJg">
             <objects>
-                <viewController storyboardIdentifier="pastPages" modalPresentationStyle="fullScreen" id="kdS-Pn-LL9" customClass="LastReadedPageViewController" customModule="QR_Reader" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="pastPages" modalPresentationStyle="fullScreen" id="kdS-Pn-LL9" customClass="LastOpenedPageViewController" customModule="QR_Reader" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mbx-JF-KZZ">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taramalar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0N9-HF-4sx">
-                                <rect key="frame" x="20" y="102" width="388" height="71"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="71" id="aIh-1t-1s8"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="fvv-9j-NmY">
-                                <rect key="frame" x="0.0" y="181" width="428" height="670"/>
+                                <rect key="frame" x="0.0" y="123" width="428" height="728"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eaK-uZ-7iQ">
@@ -139,6 +130,9 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CW0-Xx-3az">
                                 <rect key="frame" x="268" y="861" width="44" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="3K8-oA-XLS"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="qrcode" catalog="system">
                                     <color key="baseForegroundColor" systemColor="secondaryLabelColor"/>
@@ -158,27 +152,33 @@
                                     <action selector="cameraButtonClicked:" destination="qtb-nd-Whj" eventType="touchUpInside" id="Sk5-lt-Afg"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taramalar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0N9-HF-4sx">
+                                <rect key="frame" x="20" y="44" width="388" height="71"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="71" id="3K9-NJ-iqG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="XZP-sr-Sio"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="0N9-HF-4sx" firstAttribute="top" secondItem="XZP-sr-Sio" secondAttribute="top" constant="58" id="1OI-yG-Lk1"/>
-                            <constraint firstItem="eaK-uZ-7iQ" firstAttribute="width" secondItem="Qtd-h8-RQ2" secondAttribute="width" multiplier="0.48913" id="2Wt-29-rGc"/>
-                            <constraint firstItem="XZP-sr-Sio" firstAttribute="trailing" secondItem="CW0-Xx-3az" secondAttribute="trailing" constant="116" id="4WI-ce-vPd"/>
-                            <constraint firstItem="0N9-HF-4sx" firstAttribute="trailing" secondItem="mbx-JF-KZZ" secondAttribute="trailingMargin" id="6Uk-ph-9Bw"/>
-                            <constraint firstItem="fvv-9j-NmY" firstAttribute="bottom" secondItem="XZP-sr-Sio" secondAttribute="bottom" constant="-41" id="I6E-3d-wxc"/>
-                            <constraint firstItem="eaK-uZ-7iQ" firstAttribute="leading" secondItem="XZP-sr-Sio" secondAttribute="leading" constant="115" id="Nz6-2N-rck"/>
-                            <constraint firstItem="fvv-9j-NmY" firstAttribute="top" secondItem="0N9-HF-4sx" secondAttribute="bottom" constant="8" id="VUD-RR-zvH"/>
-                            <constraint firstItem="0N9-HF-4sx" firstAttribute="centerX" secondItem="fvv-9j-NmY" secondAttribute="centerX" id="XC1-wS-8Rv"/>
-                            <constraint firstItem="fvv-9j-NmY" firstAttribute="leading" secondItem="XZP-sr-Sio" secondAttribute="leading" id="ZaQ-wy-rvb"/>
-                            <constraint firstItem="XZP-sr-Sio" firstAttribute="bottom" secondItem="Qtd-h8-RQ2" secondAttribute="bottom" id="n4w-nD-ffd"/>
-                            <constraint firstItem="eaK-uZ-7iQ" firstAttribute="top" secondItem="fvv-9j-NmY" secondAttribute="bottom" constant="10" id="nYw-D5-M6G"/>
-                            <constraint firstItem="CW0-Xx-3az" firstAttribute="leading" secondItem="Qtd-h8-RQ2" secondAttribute="trailing" constant="8" symbolic="YES" id="p4K-UJ-D8o"/>
-                            <constraint firstItem="Qtd-h8-RQ2" firstAttribute="leading" secondItem="eaK-uZ-7iQ" secondAttribute="trailing" constant="8" symbolic="YES" id="qNv-ND-nPd"/>
-                            <constraint firstItem="Qtd-h8-RQ2" firstAttribute="width" secondItem="CW0-Xx-3az" secondAttribute="width" multiplier="2.09091" id="rn4-92-3Up"/>
-                            <constraint firstItem="CW0-Xx-3az" firstAttribute="top" secondItem="fvv-9j-NmY" secondAttribute="bottom" constant="10" id="sUI-cG-aLH"/>
-                            <constraint firstItem="0N9-HF-4sx" firstAttribute="leading" secondItem="mbx-JF-KZZ" secondAttribute="leadingMargin" id="xLg-Kc-2la"/>
-                            <constraint firstItem="Qtd-h8-RQ2" firstAttribute="top" secondItem="fvv-9j-NmY" secondAttribute="bottom" constant="10" id="y3A-N3-wz1"/>
+                            <constraint firstItem="0N9-HF-4sx" firstAttribute="leading" secondItem="mbx-JF-KZZ" secondAttribute="leadingMargin" id="4Iu-FP-fvc"/>
+                            <constraint firstItem="0N9-HF-4sx" firstAttribute="centerX" secondItem="fvv-9j-NmY" secondAttribute="centerX" id="7Ik-Xy-5B4"/>
+                            <constraint firstItem="fvv-9j-NmY" firstAttribute="top" secondItem="0N9-HF-4sx" secondAttribute="bottom" constant="8" id="7u4-QR-kiI"/>
+                            <constraint firstItem="eaK-uZ-7iQ" firstAttribute="baseline" secondItem="Qtd-h8-RQ2" secondAttribute="baseline" id="95y-Tc-yj0"/>
+                            <constraint firstItem="eaK-uZ-7iQ" firstAttribute="leading" secondItem="XZP-sr-Sio" secondAttribute="leading" constant="115" id="Boc-5U-uwR"/>
+                            <constraint firstItem="0N9-HF-4sx" firstAttribute="trailing" secondItem="mbx-JF-KZZ" secondAttribute="trailingMargin" id="GAb-Zl-WVg"/>
+                            <constraint firstItem="eaK-uZ-7iQ" firstAttribute="top" secondItem="fvv-9j-NmY" secondAttribute="bottom" constant="10" id="Jbk-15-Tyy"/>
+                            <constraint firstItem="fvv-9j-NmY" firstAttribute="leading" secondItem="XZP-sr-Sio" secondAttribute="leading" id="Ueu-V1-dDY"/>
+                            <constraint firstItem="XZP-sr-Sio" firstAttribute="trailing" secondItem="CW0-Xx-3az" secondAttribute="trailing" constant="116" id="XE9-Rr-HS0"/>
+                            <constraint firstItem="CW0-Xx-3az" firstAttribute="leading" secondItem="Qtd-h8-RQ2" secondAttribute="trailing" constant="8" id="cga-yS-rWM"/>
+                            <constraint firstItem="fvv-9j-NmY" firstAttribute="centerX" secondItem="Qtd-h8-RQ2" secondAttribute="centerX" id="dq7-x8-sFp"/>
+                            <constraint firstItem="0N9-HF-4sx" firstAttribute="top" secondItem="XZP-sr-Sio" secondAttribute="top" id="hIe-t5-w7R"/>
+                            <constraint firstItem="Qtd-h8-RQ2" firstAttribute="baseline" secondItem="CW0-Xx-3az" secondAttribute="baseline" id="o79-u8-ALX"/>
+                            <constraint firstItem="eaK-uZ-7iQ" firstAttribute="bottom" secondItem="XZP-sr-Sio" secondAttribute="bottom" id="slF-8w-zbs"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="IqF-vf-00O"/>
@@ -191,10 +191,10 @@
             </objects>
             <point key="canvasLocation" x="2123.8317757009345" y="1729.3736501079916"/>
         </scene>
-        <!--View Controller-->
+        <!--Last CreatedQR View Controller-->
         <scene sceneID="pUQ-DA-fqL">
             <objects>
-                <viewController storyboardIdentifier="QRViewController" modalPresentationStyle="fullScreen" id="3J2-cq-bIX" customClass="QRViewController" customModule="QR_Reader" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="QRViewController" modalPresentationStyle="fullScreen" id="3J2-cq-bIX" customClass="LastCreatedQRViewController" customModule="QR_Reader" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uf7-8f-Hhy">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -236,6 +236,7 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="createQRButtonClicked:" destination="kdS-Pn-LL9" eventType="touchUpInside" id="avZ-cC-lKU"/>
+                                    <action selector="createQRButtonClicked:" destination="3J2-cq-bIX" eventType="touchUpInside" id="n8Q-A3-IKj"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OsX-RA-iUs">

@@ -9,7 +9,7 @@ import UIKit
 import AVFoundation
 import RealmSwift
 
-class QrAppViewController: UIViewController {
+class QrCameraAppViewController: UIViewController {
     
     var captureSession = AVCaptureSession()
     var captureLayer: AVCaptureVideoPreviewLayer?
@@ -136,7 +136,7 @@ class QrAppViewController: UIViewController {
         present(pickerController, animated: true, completion: nil)
     }
     @IBAction func pastButtonClicked(_ sender: Any) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "pastPages") as! LastReadedPageViewController
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "pastPages") as! LastOpenedPageViewController
         self.present(vc, animated: true, completion: nil)
     }
     
@@ -146,7 +146,7 @@ class QrAppViewController: UIViewController {
 
 //MARK: AVCaptureMetadataOutputObjectsDelegate
 
-extension QrAppViewController : AVCaptureMetadataOutputObjectsDelegate {
+extension QrCameraAppViewController : AVCaptureMetadataOutputObjectsDelegate {
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         if metadataObjects.count == 0 {
             qrcodeFrameView?.frame = CGRect.zero
@@ -192,7 +192,7 @@ extension QrAppViewController : AVCaptureMetadataOutputObjectsDelegate {
 
 //MARK: UIImagePickerControllerDelegate,UINavigationControllerDelegate
 
-extension QrAppViewController : UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+extension QrCameraAppViewController : UIImagePickerControllerDelegate,UINavigationControllerDelegate {
    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let qrcodeImg = info[.originalImage] as? UIImage {

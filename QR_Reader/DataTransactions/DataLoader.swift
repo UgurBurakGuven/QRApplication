@@ -8,7 +8,7 @@
 import Foundation
 
 public class DataLoader {
-    @Published var userData = [TypeOfQr]()
+    @Published var userData = [QrModel]()
     
     init() {
         load()
@@ -21,7 +21,7 @@ public class DataLoader {
             do {
                 let data = try Data(contentsOf: fileLocation)
                 let jsonDecoder = JSONDecoder()
-                let dataFromJson = try jsonDecoder.decode([TypeOfQr].self, from: data)
+                let dataFromJson = try jsonDecoder.decode([QrModel].self, from: data)
                 
                 self.userData = dataFromJson
             } catch {

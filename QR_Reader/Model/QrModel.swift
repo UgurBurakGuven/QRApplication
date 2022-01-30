@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct TypeOfQr : Codable {
+struct QrModel : Codable {
     var image : String
     var name : String
     var url : String
