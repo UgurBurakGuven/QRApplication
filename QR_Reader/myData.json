@@ -52,6 +52,12 @@
         "name" : "Bing Arama",
         "url" : "https://www.bing.com/search?q=",
         "content" : "Metni girin:"
+    },
+    {
+        "image" : "phone",
+        "name" : "Phone Number",
+        "url" : "+90",
+        "content" : "Telefon numarasını başında 0 olmadan girin:"
     }
 ]
 

@@ -33,7 +33,7 @@ class ChooseQrTypeViewController: UIViewController{
 
 }
 
-//MARK: UITableViewDataSource, UITableViewDelegate
+//MARK: - UITableViewDataSource, UITableViewDelegate
 
 extension ChooseQrTypeViewController : UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

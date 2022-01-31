@@ -86,13 +86,15 @@ class QrCameraAppViewController: UIViewController {
         }
     }
     
+    
+ 
     @IBAction func changeCameraButtonClicked(_ sender: Any) {
         captureSession.removeInput(input!)
         captureSession.removeOutput(captureMetadataOutput!)
         captureSession.stopRunning()
         qrcodeFrameView?.removeFromSuperview()
         captureLayer?.removeFromSuperlayer()
-        
+    
         if counter == 0 {
             start(value: AVCaptureDevice.Position.front)
             counter += 1
@@ -100,33 +102,36 @@ class QrCameraAppViewController: UIViewController {
             start(value: AVCaptureDevice.Position.back)
             counter -= 1
         }
-       
     }
     
-        
-    @IBAction func flashlightButttonClicked(_ sender: Any) {
-            guard let device = AVCaptureDevice.default(for: .video) else { return }
+   
+   
+       
+    
+    @IBAction func flashlightButtonClicked(_ sender: Any) {
+        guard let device = AVCaptureDevice.default(for: .video) else { return }
 
-            if device.hasTorch {
-                do {
-                    try device.lockForConfiguration()
+        if device.hasTorch {
+            do {
+                try device.lockForConfiguration()
 
-                    if on == false {
-                        device.torchMode = .on
-                        on = true
-                    } else {
-                        device.torchMode = .off
-                        on = false
-                    }
-
-                    device.unlockForConfiguration()
-                } catch {
-                    print("Torch could not be used")
+                if on == false {
+                    device.torchMode = .on
+                    on = true
+                } else {
+                    device.torchMode = .off
+                    on = false
                 }
-            } else {
-                print("Torch is not available")
+
+                device.unlockForConfiguration()
+            } catch {
+                print("Torch could not be used")
             }
+        } else {
+            print("Torch is not available")
+        }
     }
+    
     
     @IBAction func selectImageButtonClicked(_ sender: Any) {
         let pickerController = UIImagePickerController()
@@ -144,7 +149,7 @@ class QrCameraAppViewController: UIViewController {
 }
 
 
-//MARK: AVCaptureMetadataOutputObjectsDelegate
+//MARK: - AVCaptureMetadataOutputObjectsDelegate
 
 extension QrCameraAppViewController : AVCaptureMetadataOutputObjectsDelegate {
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
@@ -185,12 +190,14 @@ extension QrCameraAppViewController : AVCaptureMetadataOutputObjectsDelegate {
         }
        
         }
+        
+        
     }
     
    
 }
 
-//MARK: UIImagePickerControllerDelegate,UINavigationControllerDelegate
+//MARK: - UIImagePickerControllerDelegate,UINavigationControllerDelegate
 
 extension QrCameraAppViewController : UIImagePickerControllerDelegate,UINavigationControllerDelegate {
    

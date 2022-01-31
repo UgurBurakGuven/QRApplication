@@ -26,8 +26,14 @@ class CreateQRViewController: UIViewController {
         saveButton.isHidden = true
         contentLabel.text = selectedData?.content
         contentTitle.text = selectedData?.name
+        self.textField.delegate = self
+        if selectedData?.name == "Phone Number" {
+            textField.keyboardType = UIKeyboardType.phonePad
+        }
 
-
+        let keyboardGestureRecognizer = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        keyboardGestureRecognizer.cancelsTouchesInView = false
+        view.addGestureRecognizer(keyboardGestureRecognizer)
     }
     
     
@@ -37,7 +43,7 @@ class CreateQRViewController: UIViewController {
         if let myQrCode = myQrCode {
             if let selectedUrl = selectedData?.url {
                 combinedString = "\(selectedUrl + myQrCode)"
-                qrImageView.image = generateQRCode(URL: combinedString)
+                qrImageView.image = generateQRCode(from : combinedString)
                 saveButton.isHidden = false
             }
         }
@@ -47,7 +53,7 @@ class CreateQRViewController: UIViewController {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "chooseCategory") as! ChooseQrTypeViewController
         self.present(vc, animated: true, completion: nil)
     }
-    func generateQRCode(URL: String) -> UIImage? {
+    func generateQRCode(from URL: String) -> UIImage? {
         
         let url_data = URL.data(using: String.Encoding.ascii)
     
@@ -76,4 +82,12 @@ class CreateQRViewController: UIViewController {
     }
     
 
+}
+
+//MARK: - UITextFieldDelegate
+extension CreateQRViewController : UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
 }

@@ -24,7 +24,6 @@ class LastOpenedPageViewController: UIViewController {
         pagesTableView.delegate = self
         pagesTableView.dataSource = self
         self.pagesTableView.register(UINib(nibName: "PagesTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
-        // Do any additional setup after loading the view.
         getDataFromRealm()
         searchBarSetup()
         
@@ -58,7 +57,7 @@ class LastOpenedPageViewController: UIViewController {
     }
 }
 
-//MARK:  UITableViewDataSource, UITableViewDelegate
+//MARK: - UITableViewDataSource, UITableViewDelegate
 
 extension LastOpenedPageViewController : UITableViewDataSource, UITableViewDelegate {
     
@@ -78,6 +77,13 @@ extension LastOpenedPageViewController : UITableViewDataSource, UITableViewDeleg
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let url = URL(string: String(realmArray?[indexPath.row].url ?? "")){
             UIApplication.shared.open(url)
+        }
+        if let phoneNumber = realmArray?[indexPath.row].url {
+            guard let url = URL(string: "telprompt://\(phoneNumber)"),
+                    UIApplication.shared.canOpenURL(url) else {
+                    return
+                }
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
       
     }

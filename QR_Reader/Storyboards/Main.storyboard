@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8m5-Sh-2Gg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8m5-Sh-2Gg">
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -33,7 +33,7 @@
                                     <color key="baseForegroundColor" systemColor="secondaryLabelColor"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="butttonClicked:" destination="8m5-Sh-2Gg" eventType="touchUpInside" id="vLb-oo-M9w"/>
+                                    <action selector="flashlightButtonClicked:" destination="8m5-Sh-2Gg" eventType="touchUpInside" id="sRG-PF-zp9"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hPO-lV-EpB">
@@ -68,7 +68,7 @@
                                     <color key="baseForegroundColor" systemColor="secondaryLabelColor"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="rotateButtonClicked:" destination="8m5-Sh-2Gg" eventType="touchUpInside" id="1i4-vC-E4a"/>
+                                    <action selector="changeCameraButtonClicked:" destination="8m5-Sh-2Gg" eventType="touchUpInside" id="g5t-Tb-yhQ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -442,6 +442,49 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zls-c1-Bba" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4342.9906542056069" y="1728.7257019438446"/>
+        </scene>
+        <!--Qr Detail View Controller-->
+        <scene sceneID="Zkl-OI-tcQ">
+            <objects>
+                <viewController storyboardIdentifier="qrDetail" id="ffF-jx-orK" customClass="QrDetailViewController" customModule="QR_Reader" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="m8k-F0-gue">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WLQ-BO-Htp">
+                                <rect key="frame" x="128" y="121" width="173" height="61"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Go To QR Code"/>
+                                <connections>
+                                    <action selector="goToQrCodeButtonClicked:" destination="ffF-jx-orK" eventType="touchUpInside" id="d6B-Co-h0r"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cVQ-m2-no0">
+                                <rect key="frame" x="48" y="301" width="333" height="325"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="cVQ-m2-no0" secondAttribute="height" multiplier="333:325" id="c5a-lh-xCl"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Ds6-7T-Jhb"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="WLQ-BO-Htp" firstAttribute="leading" secondItem="Ds6-7T-Jhb" secondAttribute="leading" constant="128" id="59S-qO-O3K"/>
+                            <constraint firstItem="cVQ-m2-no0" firstAttribute="top" secondItem="WLQ-BO-Htp" secondAttribute="bottom" constant="119" id="Bx6-gK-zmo"/>
+                            <constraint firstItem="Ds6-7T-Jhb" firstAttribute="trailing" secondItem="WLQ-BO-Htp" secondAttribute="trailing" constant="127" id="QQu-vC-UVk"/>
+                            <constraint firstItem="Ds6-7T-Jhb" firstAttribute="trailing" secondItem="cVQ-m2-no0" secondAttribute="trailing" constant="47" id="djz-dK-cg3"/>
+                            <constraint firstItem="cVQ-m2-no0" firstAttribute="leading" secondItem="Ds6-7T-Jhb" secondAttribute="leading" constant="48" id="idA-hH-eCw"/>
+                            <constraint firstItem="WLQ-BO-Htp" firstAttribute="top" secondItem="Ds6-7T-Jhb" secondAttribute="top" constant="77" id="mLu-8T-aAJ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="goToQrCodeButton" destination="WLQ-BO-Htp" id="mw9-5o-rGk"/>
+                        <outlet property="qrImageView" destination="cVQ-m2-no0" id="kxq-v4-m4V"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p3w-eD-n58" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5095.794392523364" y="1728.7257019438446"/>
         </scene>
     </scenes>
     <resources>

@@ -15,7 +15,7 @@ class PastQrTableViewCell: UITableViewCell {
     @IBOutlet weak var pastQrImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

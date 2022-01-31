@@ -103,9 +103,10 @@ extension LastCreatedQRViewController : UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let url = URL(string: String(filteredData?[indexPath.row].url ?? "")){
-            UIApplication.shared.open(url)
-        }
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "qrDetail") as! QrDetailViewController
+        vc.selectedUrl = filteredData?[indexPath.row]
+        self.present(vc, animated: true, completion: nil)
+      
        
     }
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -168,7 +169,6 @@ extension LastCreatedQRViewController : UISearchBarDelegate {
         searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 60))
         searchBar?.showsScopeBar = true
         searchBar?.delegate = self
-        searchBar?.scopeButtonTitles = ["Filter By URL"]
         self.qrTableView.tableHeaderView = searchBar
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
