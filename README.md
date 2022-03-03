@@ -5,6 +5,8 @@
 ### - Create your own special Qr Code.
 ### - Save the Qr codes you have read and created in the Realm database.
 
+## * pictures of the app *
+
 <p float="left">
 <img src="https://user-images.githubusercontent.com/79001982/151862037-c9ce63b7-fed9-4c4e-9b10-902e63107dcf.PNG" width="200" height="400" />
 <img src="https://user-images.githubusercontent.com/79001982/151861276-943b01d4-13a3-4827-9f58-841b5d81e199.png" width="200" height="400" />
