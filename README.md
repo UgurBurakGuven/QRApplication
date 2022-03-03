@@ -4,6 +4,7 @@
 ### - The codes read are automatically saved.
 ### - Create your own special Qr Code.
 ### - Save the Qr codes you have read and created in the Realm database.
+### - Using Searchbar.
 
 ## * Pictures of the app *
 
