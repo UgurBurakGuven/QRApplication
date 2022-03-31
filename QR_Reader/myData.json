@@ -58,6 +58,18 @@
         "name" : "Phone Number",
         "url" : "+90",
         "content" : "Telefon numarasını başında 0 olmadan girin:"
+    },
+    {
+        "image" : "linkedin",
+        "name" : "Linkedin",
+        "url" : "https://www.linkedin.com/in/",
+        "content" : "Lütfen linkedin kullanıcı adınızı girin: "
+    },
+    {
+        "image" : "github",
+        "name" : "Github",
+        "url" : "https://github.com/",
+        "content" : "Lütfen github kullanıcı adınızı girin: "
     }
 ]
 

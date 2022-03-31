@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3AC6DD0A27A806A6005E8DE8 /* QrDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC6DD0927A806A6005E8DE8 /* QrDetailViewController.swift */; };
+		3AF0972B27F36EE800E1B92E /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 3AF0972A27F36EE800E1B92E /* Realm */; };
+		3AF0972D27F36EE800E1B92E /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3AF0972C27F36EE800E1B92E /* RealmSwift */; };
 		BB6957F28693A4BD877D2BE7 /* Pods_QR_Reader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E3484D92C1C41D3C466D8A3 /* Pods_QR_Reader.framework */; };
 		D021694C27A5E4C500BC1A64 /* TypeOfPageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D021694A27A5E4C500BC1A64 /* TypeOfPageTableViewCell.swift */; };
 		D021694D27A5E4C500BC1A64 /* TypeOfPageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D021694B27A5E4C500BC1A64 /* TypeOfPageTableViewCell.xib */; };
@@ -65,6 +67,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AF0972D27F36EE800E1B92E /* RealmSwift in Frameworks */,
+				3AF0972B27F36EE800E1B92E /* Realm in Frameworks */,
 				BB6957F28693A4BD877D2BE7 /* Pods_QR_Reader.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -211,13 +215,16 @@
 				D0BEB56A27A0415E001CA26D /* Sources */,
 				D0BEB56B27A0415E001CA26D /* Frameworks */,
 				D0BEB56C27A0415E001CA26D /* Resources */,
-				7B90F9D56D12C930BDE0BCA1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = QR_Reader;
+			packageProductDependencies = (
+				3AF0972A27F36EE800E1B92E /* Realm */,
+				3AF0972C27F36EE800E1B92E /* RealmSwift */,
+			);
 			productName = QR_Reader;
 			productReference = D0BEB56E27A0415E001CA26D /* QR_Reader.app */;
 			productType = "com.apple.product-type.application";
@@ -246,6 +253,9 @@
 				Base,
 			);
 			mainGroup = D0BEB56527A0415E001CA26D;
+			packageReferences = (
+				3AF0972927F36EE800E1B92E /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
 			productRefGroup = D0BEB56F27A0415E001CA26D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -293,23 +303,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7B90F9D56D12C930BDE0BCA1 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-QR_Reader/Pods-QR_Reader-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-QR_Reader/Pods-QR_Reader-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-QR_Reader/Pods-QR_Reader-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -552,6 +545,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3AF0972927F36EE800E1B92E /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3AF0972A27F36EE800E1B92E /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3AF0972927F36EE800E1B92E /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		3AF0972C27F36EE800E1B92E /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3AF0972927F36EE800E1B92E /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D0BEB56627A0415E001CA26D /* Project object */;
 }
